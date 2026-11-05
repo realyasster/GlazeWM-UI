@@ -1,61 +1,120 @@
 # GlazeWM UI — Control Center & Configurator
 
-[GlazeWM](https://github.com/glzr-io/glazewm) tiling pencere yöneticisi için modern, hızlı ve kullanımı kolay masaüstü kontrol merkezi (Windows `.exe`).
+> A modern, fast and easy-to-use desktop control center for the [GlazeWM](https://github.com/glzr-io/glazewm) tiling window manager on Windows.
+
+**English** · [Türkçe](README.tr.md)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows-0078D6.svg)](#)
+[![Electron](https://img.shields.io/badge/Electron-34-47848F.svg)](https://www.electronjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg)](https://react.dev/)
 
 ---
 
-## ✨ Özellikler
+## 📥 Download
 
-- **🎨 Boşluklar ve Efekt Stüdyosu (Gaps & Effects):**
-  - İç ve dış pencere boşluklarını (`inner_gap`, `outer_gap`) canlı slider ile anlık ayarlama.
-  - Odaklı ve inaktif pencereler için renk seçici (Color Picker) ve kenarlık rengi özelleştirme.
-  - Windows 11 için köşe stilleri (`square`, `rounded`, `small_rounded`).
-  - Ayarları yaparken masaüstünde nasıl görüneceğini gösteren **canlı etkileşimli önizleme**.
+Grab the latest portable `.exe` from the [**Releases**](https://github.com/realyasster/GlazeWM-UI/releases/latest) page — no installation required.
 
-- **🛡️ Akıllı Pencere Kuralları (Window Rules):**
-  - **Canlı Pencere Dedektörü:** GlazeWM IPC üzerinden açık olan tüm pencereleri anlık listeler (`process_name`, `class_name`, `title`).
-  - **Tek Tıkla Kural Oluşturma:** Uygulama adını elle yazmaya gerek kalmadan "Kayan Pencere Yap (`set-floating`)", "Yok Say (`ignore`)" veya "Çalışma Alanına Taşı (`move --workspace X`)" kuralları tanımlama.
-
-- **⌨️ Kısayol Tuşları & Çakışma Denetleyici (Keybindings):**
-  - Tüm klavye kısayollarını görsel tuş rozetleriyle (`<kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd>`) arama ve filtreleme.
-  - **Çakışma Tespiti (Conflict Detector):** Aynı tuş kombinasyonu birden fazla komuta atanmışsa otomatik sarı uyarı rozeti gösterir.
-  - Form üzerinden kolayca yeni kısayol ekleme ve silme.
-
-- **🗂️ Çalışma Alanları (Workspaces):**
-  - Çalışma alanı etiketlerini (`display_name`) ve monitör sabitlemelerini (`bind_to_monitor`) yönetme.
-  - Tek tıkla o alana geçiş testi yapabilme (`focus --workspace`).
-
-- **⚙️ Genel Tercihler (General Settings):**
-  - Fareyi takip eden odak (`focus_follows_cursor`), odaklanıldığında eski alana dönme (`toggle_workspace_on_refocus`).
-  - Açılış (`startup_commands`) ve kapanış (`shutdown_commands`) komutlarını yönetme.
-
-- **📝 YAML Editörü & Otomatik Yedekleme (Auto-Backup):**
-  - Doğrudan `config.yaml` dosyasını düzenleme ve sözdizimi doğrulama (syntax check).
-  - Her kayıt işleminde timestamp ile otomatik yedek alma (`config.backup-YYYY-MM-DD.yaml`) ve tek tıkla eski yedeğe geri dönebilme.
-
-- **⚡ Sistem Tepsisi (Tray) & Gerçek Zamanlı IPC:**
-  - GlazeWM arka plan servisine yerel WebSocket IPC ile bağlanır.
-  - Sistem tepsisinde hızlı menü: Config Yenile (`wm-reload-config`), Kayan Pencere Aç/Kapa (`toggle-floating`), Tiling Yönü Değiştir.
+> Requires [GlazeWM](https://github.com/glzr-io/glazewm) to be installed and running. The app talks to it over the local IPC socket and reads/writes your `config.yaml`.
 
 ---
 
-## 🚀 Çalıştırma ve Derleme
+## ✨ Features
 
-### Geliştirici Modunda Çalıştırma (Dev Mode)
+- **🎨 Gaps & Effects Studio**
+  - Tune inner and outer window gaps (`inner_gap`, `outer_gap`) live with sliders.
+  - Color pickers for focused and inactive window borders.
+  - Windows 11 corner styles (`square`, `rounded`, `small_rounded`).
+  - **Live interactive preview** of how your desktop will look while you tweak settings.
+
+- **🛡️ Smart Window Rules**
+  - **Live Window Detector:** lists every open window (`process_name`, `class_name`, `title`) via GlazeWM IPC.
+  - **One-click rule creation:** make floating windows (`set-floating`), ignore windows (`ignore`) or move them to a workspace (`move --workspace X`) without typing app names by hand.
+
+- **⌨️ Keybindings & Conflict Detection**
+  - Search and filter all shortcuts with visual key badges (`<kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>Q</kbd>`).
+  - **Conflict detector:** automatically flags combinations bound to more than one command.
+  - Add and remove shortcuts from a simple form.
+
+- **🗂️ Workspaces**
+  - Manage workspace labels (`display_name`) and monitor bindings (`bind_to_monitor`).
+  - One-click focus test for any workspace (`focus --workspace`).
+
+- **⚙️ General Preferences**
+  - `focus_follows_cursor`, `toggle_workspace_on_refocus`.
+  - Manage `startup_commands` and `shutdown_commands`.
+
+- **📝 YAML Editor & Auto-Backup**
+  - Edit `config.yaml` directly with syntax validation.
+  - Every save creates a timestamped backup (`config.backup-YYYY-MM-DD.yaml`) with one-click restore.
+
+- **⚡ System Tray & Real-time IPC**
+  - Connects to the GlazeWM background service over local WebSocket IPC.
+  - Tray menu shortcuts: reload config (`wm-reload-config`), toggle floating, change tiling direction.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Windows 10/11
+- [GlazeWM](https://github.com/glzr-io/glazewm) installed
+- [Node.js](https://nodejs.org/) 20+ and [pnpm](https://pnpm.io/)
+
+### Development mode
+
 ```bash
-# Bağımlılıkları yükleyin
+# Install dependencies
 pnpm install
 
-# Geliştirme sunucusunu ve Electron'u başlatın
+# Start the Vite dev server and Electron together
 pnpm run electron:dev
 ```
 
-### Windows `.exe` Paketleme (Production Build)
+### Build a Windows `.exe`
+
 ```bash
-# Kurulum gerektirmeyen taşınabilir tek dosya .exe üretir:
+# Portable single-file .exe (no installation needed)
 pnpm run package:portable
 
-# NSIS kurulum paketi ve taşınabilir .exe üretir:
+# NSIS installer + portable .exe
 pnpm run package
 ```
-Çıktı dosyası `release/` klasörü altına kaydedilir (örn. `release/GlazeWM UI 1.0.0.exe`).
+
+Artifacts are written to `release/` (e.g. `release/GlazeWM UI 1.0.0.exe`).
+
+---
+
+## 🧱 Tech Stack
+
+| Layer    | Technology                          |
+| -------- | ----------------------------------- |
+| Shell    | Electron 34                         |
+| UI       | React 19 + TypeScript               |
+| Styling  | Tailwind CSS 3                      |
+| Build    | Vite 6 + electron-builder           |
+| Config   | YAML (`yaml`) + GlazeWM IPC         |
+| Icons    | lucide-react                        |
+
+---
+
+## 📁 Project Structure
+
+```
+electron/        Main process, preload bridge, config & GlazeWM services
+src/             React renderer (views, components, services, types)
+index.html       Renderer entry point
+vite.config.ts   Vite build configuration
+package.json     Scripts, dependencies and electron-builder config
+```
+
+---
+
+## 🤝 Contributing
+
+Issues and pull requests are welcome. For larger changes, please open an issue first so we can discuss the approach.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).

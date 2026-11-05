@@ -5,6 +5,14 @@
   "main": "dist-electron/main.js",
   "author": "Yasin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realyasster/GlazeWM-UI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/realyasster/GlazeWM-UI/issues"
+  },
+  "homepage": "https://github.com/realyasster/GlazeWM-UI#readme",
   "scripts": {
     "dev": "vite",
     "build:renderer": "tsc && vite build",
